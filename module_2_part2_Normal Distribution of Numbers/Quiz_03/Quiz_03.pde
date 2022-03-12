@@ -10,11 +10,11 @@ void draw()
   float gaussian = randomGaussian();
   println(gaussian); //outputs print of gaussian values generated
   
-  float standardDeviation = 200;
-  float mean = 350;
+  float standardDeviation = 100;
+  float mean = 150;
   
   float x = standardDeviation * gaussian + mean; //gaussian for x values
-  int y = (int)random(0,1020); //randomized y values from top to bottom of screen
+  int y = (int)random(-510,510); //randomized y values from top to bottom of screen
   float z = standardDeviation * gaussian + mean; //gaussian for circle thickness/scale
   
   noStroke(); //colorless stroke (circles)
