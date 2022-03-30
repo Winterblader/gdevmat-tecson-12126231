@@ -1,22 +1,25 @@
-public class Walker //intialize walker class
+public class Walker //initialize class walker
 {
 public PVector position = new PVector();
 public PVector velocity = new PVector();
 public PVector acceleration = new PVector();
 
 public float velocityLimit = 10;
-public float scale;
-public float mass;
+public float scale = 15;
+public float mass = 1;
  
-public Walker()
-{
-  
-}
+public Walker(){}
 
 public void applyForce(PVector force)
 {
   PVector f = PVector.div(force, this.mass);
   this.acceleration.add(f); //force accumulation
+}
+
+public void spill()
+{
+ //random color
+ fill(random(255), random(255), random(255)); 
 }
 
  public void update()
@@ -35,21 +38,21 @@ public void applyForce(PVector force)
  //bounce circle if it hits edge
  public void checkEdges()
  {
-  if (walker.position.y <= Window.bottom)
+  if (this.position.y <= Window.bottom)
   {
-    walker.velocity.y *= -1;
+    this.velocity.y *= -1;
   }
-  if (walker.position.x >= Window.right)
+  if (this.position.x >= Window.right)
   {
-   walker.velocity.x *= -1; 
+   this.velocity.x *= -1; 
   }
-  if (walker.position.x <= Window.left)
+  if (this.position.x <= Window.left)
   {
-   walker.velocity.y *= -1; 
+   this.velocity.y *= -1; 
   }
-  if (walker.position.y >= Window.top)
+  if (this.position.y >= Window.top)
   {
-   walker.velocity.y += -1; 
+   this.velocity.y += -1; 
   }
  }
  

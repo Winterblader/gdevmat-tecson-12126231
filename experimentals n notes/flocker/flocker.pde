@@ -89,6 +89,7 @@ class Flocker {
   }
 
   void draw() {
+    fill(255, 0, 0);
     ellipse(x, y, radius, radius);
   }
 }
