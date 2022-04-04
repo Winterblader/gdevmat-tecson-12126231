@@ -18,13 +18,11 @@ void setup()
     walker[i].mass = i+1; //mass to scale formula
     walker[i].scale = walker[i].mass * 15;
     
-    walker[i].spill(); //color
+    //RGB random colors
+    walker[i].r = random(0,255);
+    walker[i].g = random(0,255);
+    walker[i].b = random(0, 255);
   }
-}
-
-void mousePressed() 
-{
-  walker[0].spill();
 }
 
 void draw()

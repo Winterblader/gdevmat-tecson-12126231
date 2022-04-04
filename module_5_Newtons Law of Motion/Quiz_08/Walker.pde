@@ -7,6 +7,7 @@ public PVector acceleration = new PVector();
 public float velocityLimit = 10;
 public float scale = 15;
 public float mass = 1;
+public float r,g,b; //RGB colors
  
 public Walker(){}
 
@@ -14,12 +15,6 @@ public void applyForce(PVector force)
 {
   PVector f = PVector.div(force, this.mass);
   this.acceleration.add(f); //force accumulation
-}
-
-public void spill()
-{
- //random color
- fill(random(255), random(255), random(255)); 
 }
 
  public void update()
@@ -32,6 +27,7 @@ public void spill()
  
  public void render()
  {
+   fill(r,g,b); //fill each walker
    circle(position.x, position.y, scale); //render circle 
  }
  
