@@ -24,7 +24,7 @@ void setup()
 
 void draw()
 {
-  background(255); //flush screen w/ black
+  background(255); //flush screen w/ white
   liquid.render();
   
   //loop for each walker

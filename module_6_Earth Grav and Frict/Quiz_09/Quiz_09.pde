@@ -1,4 +1,4 @@
-Walker[] walker = new Walker[8]; //initialize array of 10 walkers
+Walker[] walker = new Walker[8]; //initialize array of 8 walkers
 
 void setup()
 {

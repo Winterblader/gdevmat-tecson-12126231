@@ -1,6 +1,7 @@
 public class Walker //initialize class walker
 {
-public float scale = 20;
+public float gravitationalConstant = 1;
+public float scale = 10;
 public float mass = 100;
 public PVector position = new PVector();
 public PVector velocity = new PVector();
@@ -26,6 +27,7 @@ public void applyForce(PVector force)
  
  public void render()
  {
+   noStroke(); //no stroke
    fill(r,g,b); //fill with random colors
    circle(position.x, position.y, scale); //render circle 
  }
@@ -35,7 +37,7 @@ public void applyForce(PVector force)
  {
   if (this.position.y <= Window.bottom)
   {
-   this.velocity.y *= -1;
+    this.velocity.y *= -1;
   }
   if (this.position.x >= Window.right)
   {
@@ -49,6 +51,21 @@ public void applyForce(PVector force)
   {
    this.velocity.y += -1; 
   }
+ }
+ 
+ public PVector calculateAttraction(Walker walker)
+ {
+   PVector force = PVector.sub(this.position, walker.position); //direction
+   float distance = force.mag();
+   force.normalize(); //normalize to accurately get direction
+   
+   distance = constrain(distance, 5, 25); //solves divide by 0, and divide by really tiny values
+   //so it doesnt shoot out the smol walkers
+   
+   float strength = (this.gravitationalConstant * this.mass * walker.mass) 
+   / (distance * distance);
+   force.mult(strength);
+   return force;
  }
 
 }

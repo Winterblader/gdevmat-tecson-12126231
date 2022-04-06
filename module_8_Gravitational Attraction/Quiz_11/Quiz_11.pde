@@ -1,4 +1,5 @@
 Walker[] walker = new Walker[10]; //initialize array of 10 walkers
+//(╯° ͟°)╯┻━┻ 
 
 void setup()
 {
@@ -7,9 +8,10 @@ void setup()
   for(int i=0; i < 10; i++)
   {
     walker[i] = new Walker(); //initalize each walker
- 
-    walker[i].position.x = 0; //inital x,y walker position
-    walker[i].position.y = 0;
+    
+    //random walker positions
+    walker[i].position = new PVector(random(Window.left, Window. right),
+                                     random(Window.bottom, Window.top));
     walker[i].mass = i+1;
     walker[i].scale = walker[i].mass * 10;
     
@@ -20,15 +22,25 @@ void setup()
   }
 }
 
+//random colors/mouse movement
+void mouseMoved(){for(int i=0; i < 10; i++){walker[i].r = random(0,255);walker[i].g = random(0,255);walker[i].b = random(0, 255);}}
+
 void draw()
 {
   background(0); //flush screen w/ black
   
   //loop for each walker
-  for (int i = 0; i < 8; i++)
+  for (int i =0; i <10; i++)
   {
+  //call functions for walker
   walker[i].update();
   walker[i].render();
   walker[i].checkEdges();
+  
+  //does attraction
+  for(int j=0; j<10; j++)
+  {
+    walker[i].applyForce(walker[j].calculateAttraction(walker[i]));
+  }
   }
 }
